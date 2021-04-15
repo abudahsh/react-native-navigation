@@ -101,9 +101,13 @@ public class NavigationModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void setDefaultOptions(ReadableMap options) {
         handle(() -> {
-            Options defaultOptions = parse(options);
-            layoutFactory.setDefaultOptions(defaultOptions);
-            navigator().setDefaultOptions(defaultOptions);
+          try {
+                Options defaultOptions = parse(options);
+                layoutFactory.setDefaultOptions(defaultOptions);
+                navigator().setDefaultOptions(defaultOptions);
+            }catch(Exception e ){
+
+            }
         });
     }
 
